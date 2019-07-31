@@ -1,9 +1,10 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+var gulp = require('gulp')
+var sass = require('gulp-sass')
 var CleanCSS = require('gulp-clean-css')
 var sourcemaps = require('gulp-sourcemaps')
-var browserSync = require('browser-sync').create();
-var imagemin = require('gulp-imagemin');
+var browserSync = require('browser-sync').create()
+var imagemin = require('gulp-imagemin')
+var ghpages = require('gh-pages')
 
 sass.compiler = require('node-sass');
 
@@ -68,6 +69,10 @@ gulp.task("watch", function () {
     gulp.watch("src/fonts/*", ["fonts"])
 
     gulp.watch("src/img/*", ["images"])
+})
+
+gulp.task("deploy", function() {
+    ghpages.publish('dist')
 })
 
 // run as the default when gulp has been started in the command line
